@@ -1,6 +1,7 @@
 import defRPAselenium
 import moldesTerrenos
 import modelsUnidadesvendidas
+import pdf
 import models
 from RPA.Browser.Selenium import Selenium;
 import os
@@ -66,7 +67,7 @@ def task():
                 rol1=dtable[7]                               
                 rol2=dtable[8]
                 Codigo=dtable[14]
-                comuna=dtable[14]
+                comuna=dtable[14]                                                                                                                                                                           
 
                 cantidad=0
                 consulta=True
@@ -120,10 +121,9 @@ if __name__ == "__main__":
    eliminarcarpetas()
    Creacionescarpetas()
    defRPAselenium.bakup()
-   
    tgc()
-
    modelsUnidadesvendidas.task()
+   pdf.task()
    defRPAselenium.salida()
    print('Ejecucion finalizada')
    

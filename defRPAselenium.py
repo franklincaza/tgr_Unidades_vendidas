@@ -51,16 +51,11 @@ def Pyasset(asset):
             return exitdato
 
 def openweb(u):
+    browser.open_available_browser(u)
+ 
+    
+    
 
-
-    browser.open_available_browser(u,browser_selection="firefox",use_profile=True)
-
-    browser.open_available_browser(u,browser_selection="firefox")
-
-   
-   
-    #browser.open_available_browser(url=u,browser_selection="Chrome",use_profile=True,profile_name="franklin ramirez", profile_path=tpath)
-    #browser.open_available_browser(url=u)
     browser.maximize_browser_window() 
 
     validacion= browser.get_text("//DIV[@class='dentro_letra'][text()='Contribuciones']")
@@ -218,6 +213,19 @@ def navegacion(region,comuna,rol1,rol2,ruta,hoja):
         typeinputText("//INPUT[@id='subRol']",rol2)
         clickweb("//INPUT[@id='btnRecaptchaV3Envio']/self::INPUT")
         tiempoespera()
+        try:
+            retcahat = browser.get_text("//DIV[@id='txtRecaptchaV2']/self::DIV")
+            print(retcahat)
+        except:pass 
+        validarecachat="Favor complete el desafío para continuar con la consulta"
+        if retcahat == retcahat:
+             if Pyasset(asset="DebugMode") == "TRUE":
+                browser.close_all_browsers()
+             else:
+                from tkinter import messagebox
+                messagebox.showinfo(message="Soluciona el Recatchat de google para poder seguir con la ejecucion ", title="Problemas de retcachat")
+                print("Recachat , ingresado manual")
+                
     interacion()
     
     try: # Validando si la tabla funciona
